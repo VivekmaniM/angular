@@ -1,0 +1,21 @@
+<div class="container">
+	<h2>Images</h2>
+
+	<div class="row">
+		<div class="card" matTooltip={{new.tags}} matTooltipClass="example-tooltip" *ngFor="let new of newArray">
+			<div class="row">
+				<div class="img">
+					<img [src]="new.previewURL" alt="..." style="width: 100%" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="img-info">
+					<h6>{{ new.downloads }} Downloads</h6>
+					<h6>{{ new.views }} Views</h6>
+					<span class="img-size-info">{{new.imageWidth}} x {{new.imageHeight}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
