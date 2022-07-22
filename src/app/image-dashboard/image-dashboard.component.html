@@ -1,21 +1,40 @@
 <div class="container">
-	<h2>Images</h2>
-
-	<div class="row">
-		<div class="card" matTooltip={{new.tags}} matTooltipClass="example-tooltip" *ngFor="let new of newArray">
+	<div class="border-box">
+		<h2>Enter here to search</h2>
+		<mat-form-field class="example-form-field search-input" appearance="fill">
+		  <mat-label>Eg: Camera</mat-label>
+		  <input matInput type="text" #searchBox>
+		</mat-form-field>
+		<button class="search-btn" mat-stroked-button color="primary" (click)="getImages(searchBox.value)">Search</button>
+	</div>
+	
+	<div class="border-box m-t-20">
+		<h2>Search Result</h2>
+		<div *ngIf="imageList.length > 0; else message">
 			<div class="row">
-				<div class="img">
-					<img [src]="new.previewURL" alt="..." style="width: 100%" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="img-info">
-					<h6>{{ new.downloads }} Downloads</h6>
-					<h6>{{ new.views }} Views</h6>
-					<span class="img-size-info">{{new.imageWidth}} x {{new.imageHeight}}</span>
+				<div class="card" matTooltip={{new.tags}} matTooltipClass="example-tooltip" *ngFor="let new of imageList">
+					<div class="row">
+						<div class="img">
+							<img [src]="new.previewURL" alt="..." style="width: 100%" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="img-info">
+							<h6>{{ new.downloads }} Downloads</h6>
+							<h6>{{ new.views }} Views</h6>
+							<span class="img-size-info">{{new.imageWidth}} x {{new.imageHeight}}</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+		
+		<ng-template #message>
+			<div class="row">
+				<div class="info">
+					No images found
+				</div>
+			</div>
+		</ng-template>
 	</div>
 </div>
-
